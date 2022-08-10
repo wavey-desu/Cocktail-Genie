@@ -1,17 +1,32 @@
-import { useState, useEffect } from 'react'
 
+import React, {useState, useEffect} from 'react'
 // styles | components //
 import './App.css';
 import {useFetch} from './components/useFetch'
+import DrinkCard from './components/DrinkCard'
+import DrinkModal from './components/DrinkModal'
+
+
 
 function App() {
-const url = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=beer'
-const {data, isPending, error} = useFetch(url)
-const {drinks,setDrinks} = useState([])
+const [url, setUrl] = useState('https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=bourbon')
+const {data, isPending, error} = useFetch(url);
+const [drinks, setDrinks] = useState([]);
+const [open, setOpen] = useState(false);
 
-console.log(data);
+const handleOpen = () => setOpen(true);
+const handleClose = () => setOpen(false);
+
+useEffect(() => {
+  if (data !== null) {
+    setDrinks(prevDrinks => {return data.drinks})
+  }
+}, [data])
+
+
   return (
     <div className="App">
+      <DrinkModal open = {open} handleClose = {handleClose}/>
       <header className="header">
 
       </header>
@@ -21,7 +36,16 @@ console.log(data);
         </div>
 
         <div className='resultsPage'>
+          {drinks && drinks.map(drink => (
+            <DrinkCard 
+              key = {drink.idDrink}
+              id = {drink.idDrink}
+              name = {drink.strDrink}
+              img = {drink.strDrinkThumb}
+              handleOpen = {handleOpen}
+             />
 
+          ))}
         </div>
       </div>
     </div>

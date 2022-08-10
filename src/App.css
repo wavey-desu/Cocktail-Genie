@@ -35,6 +35,15 @@ header{
   height: 100%;
   width: 75%;
   border: gray 1px solid;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 1%;
+  padding: 1%;
+  overflow: hidden;
+  overflow-y: scroll;
 }
 
 
