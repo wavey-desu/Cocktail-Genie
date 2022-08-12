@@ -2,39 +2,39 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family:'Roboto', sans-serif;
 }
 
 .App {
   position: relative;
   width: 100vw;
   height: 100vh;
-  background: #B0C4DE;
 }
 
 header{
   position: relative;
   width: 100vw;
-  height: 10vh;
+  height: 7.5vh;
   top: 0;
   left: 0;
+  background-color: #d7cec7;
 }
 .appContainer{
   position: relative;
   width: 100vw;
-  height: 90vh;
+  height: 92.5vh;
   display: flex;
   flex-direction: row;
 }
 
-.searchBar{
+.filterPage{
   height: 100%;
-  width: 25%;
-  border: black 1px solid;
+  width: 20%;
+  background-color: #d7cec7;
 }
 .resultsPage{
   height: 100%;
-  width: 75%;
-  border: gray 1px solid;
+  width: 80%;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -44,6 +44,9 @@ header{
   padding: 1%;
   overflow: hidden;
   overflow-y: scroll;
+  /* background-color: #76323f; */
+  background-color: #d7cec7;
+
 }
 
 

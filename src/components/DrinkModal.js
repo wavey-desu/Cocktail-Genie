@@ -1,31 +1,88 @@
 import React, {useState, useEffect} from 'react'
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
+import {useFetch} from './useFetch'
+import './DrinkModal.css'
 
 
-const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 400,
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
-    boxShadow: 24,
-    p: 4,
-  };
+export default function DrinkModal({open,  handleClose, drinkId}) {
+    const {data, isPending, error} = useFetch(drinkId);
+    const [drink, setDrink] = useState([]);
+    const [ingredients, setIngredients] = useState([])
 
-export default function DrinkModal({open,  handleClose}) {
+
+    useEffect(() => {
+        if (data !== null) {
+          setDrink(prevDrink => {return {...data.drinks[0]}})
+        }
+    }, [data])
+    
+    useEffect(() => { //useEffect on selected drink to get ingredients bc JSON format is trash
+        const ing = []
+        const measures = []
+        const ings = {}
+
+        for (const prop in drink) {
+            if (prop.startsWith('strIngredient')){
+                if (drink[prop]) {
+                    ing.push(drink[prop])
+                }
+            } else if (prop.startsWith('strMeasure')){
+                if (drink[prop]) {
+                    measures.push(drink[prop])
+                }
+            }
+        }
+
+        for(let i=0; i<ing.length; i++){
+            if (measures[i]){
+                ings[i] = {
+                    name: ing[i],
+                    measure: measures[i]
+                }
+            } else {
+                ings[i] = {
+                    name: ing[i],
+                    measure: 'To Taste'
+                }
+            }
+        }
+        setIngredients({...ings})
+    }, [drink])
+    // console.log(ingredients);
+    
+    
   return (
     <div>
         <Modal
         open={open}
         onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
+        aria-labelledby="Drink recipe"
+        aria-describedby="Drink Recipe"
       >
-        <Box sx={style}>
-            <h1>YO</h1>
+        <Box className='modalBox'>
+        <div className='modalContents'>
+            <div className='modalSection modalInfo'>
+                <img className='modalImg' src={drink.strDrinkThumb} alt="Drink" />
+                <h3>{drink.strInstructions}</h3>
+            </div>
+            <div className="modalSection modalIngredients">
+            <h1 className='modalTitle'>{drink.strDrink}</h1>
+                <table>
+                    <tr>
+                        <th>Ingredient</th>
+                        <th>Quantity</th>
+                    </tr>
+                {ingredients && Object.keys(ingredients).map((ingredient, index) => ( //iterate trough objects of ingredient object
+                    <tr>
+                    <td key={index}>{ingredients[ingredient].name}</td>
+                    <td key={index}>{ingredients[ingredient].measure}</td>
+                    </tr>
+                    
+                ))}
+                </table>
+            </div>
+        </div>
         </Box>
       </Modal>
     </div>
