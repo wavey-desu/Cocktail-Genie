@@ -1,0 +1,22 @@
+.AlcFilterCont{
+    position: relative;
+    width: 100%;
+    text-align: center;
+}
+.AlcFilterTitle{
+    width: 90%;
+    position: relative;
+    font-size: 1.8vw;
+    margin-bottom: 1vh;
+    color: #76323f;
+}
+.AlcFilterRadio{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+.css-ahj2mt-MuiTypography-root{
+    font-size: 1.2vw !important;
+}

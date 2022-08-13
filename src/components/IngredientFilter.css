@@ -1,0 +1,42 @@
+.ingredientsForm{
+    position: relative;
+    width: 18vw;
+    width: 100%;
+    /* height: 45%; */
+}
+.ingredientsLabel{
+    font-size: 1.8vw;
+    margin-bottom: 1vh;
+    color: #76323f;
+
+}
+.ingredientsInputs{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 90%;
+    gap: 1vh;
+
+}
+.ingredientsSubmit{
+    width: 35%;
+    height: 100%;
+    padding: 2%;
+    background-color: #76323f;
+    border: none;
+    border-radius: 1vw;
+    font-family:'Roboto', sans-serif;
+    font-size: 1.1vw;
+    font-weight: 700;
+    color: white;
+    transition: all .2s;
+}
+.ingredientsSubmit:hover{
+    background-color: #57242d;
+    cursor: pointer;
+}
+.ingredientsSubmit:active{
+    transform: translateY(4%);
+}

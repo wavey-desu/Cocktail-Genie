@@ -1,0 +1,24 @@
+.nameSearchForm{
+    position: relative;
+    width: 100%;
+}
+.nameSearchCont{
+    position: relative;
+    width: 18vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.searchLabel{
+    font-size: 1.8vw;
+    margin-bottom: 2.5%;
+    color: #76323f;
+}
+.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline {
+    border-color: #76323f !important;
+}
+
+.css-1sumxir-MuiFormLabel-root-MuiInputLabel-root.Mui-focused{
+    color: #76323f !important;
+}

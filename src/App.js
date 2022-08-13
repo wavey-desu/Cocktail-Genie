@@ -64,6 +64,7 @@ console.log(rDrinks);
 
   return (
     <div className="App">
+    <h1 className='appTitle'>Cocktail Genie</h1>
       <DrinkModal 
         open = {open} 
         handleClose = {handleClose}

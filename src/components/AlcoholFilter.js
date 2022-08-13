@@ -4,6 +4,7 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
+import './AlcoholFilter.css'
 
 export default function AlcoholFilter({setAlcFilter}) {
   const [value,setValue] = useState('')
@@ -12,22 +13,37 @@ export default function AlcoholFilter({setAlcFilter}) {
     setValue(e.target.value)
   }
 
-  return (
-    <FormControl>
-    <FormLabel id="alcohol-filter">Choose one</FormLabel>
-    <RadioGroup
-      row
-      aria-labelledby="alcohol-filter"
-      name="alcohol-filter-radio"
-      value={value}
-      onClick={(e) => setAlcFilter(e.target.value)}
-      onChange={handleChange}
-    >
-      <FormControlLabel value= '' control={<Radio />} label="Both" />
-      <FormControlLabel value="Alcoholic" control={<Radio />} label="Alcoholic" />
-      <FormControlLabel value="Non alcoholic" control={<Radio />} label="Non-Alcoholic" />
+  const style = {
+    '&.Mui-checked': {
+      color: '#76323f !important',
+    },
+    '& .MuiSvgIcon-root': {
+      fontSize: '1.5vw',
+    },
+    
+  }
 
-    </RadioGroup>
-  </FormControl>
+  return (
+    <div className='AlcFilterCont'>
+      <h1 className='AlcFilterTitle'>Filter By Alcoholic</h1>
+      <FormControl >
+        <RadioGroup
+          className='AlcFilterRadio'
+          row
+          aria-labelledby="alcohol-filter"
+          name="alcohol-filter-radio"
+          value={value}
+          onClick={(e) => setAlcFilter(e.target.value)}
+          onChange={handleChange}
+          
+        >
+          <FormControlLabel value= '' control={<Radio  sx={style}/>} label="Both" />
+          <FormControlLabel value="Alcoholic" control={<Radio sx={style} />} label="Alcoholic" />
+          <FormControlLabel value="Non alcoholic" control={<Radio sx={style} />} label="Non-Alcoholic" />
+
+        </RadioGroup>
+    </FormControl>
+
+    </div>
   )
 }

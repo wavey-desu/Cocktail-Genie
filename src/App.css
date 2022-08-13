@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
 *{
   box-sizing: border-box;
   margin: 0;
@@ -19,6 +21,15 @@ header{
   left: 0;
   background-color: #d7cec7;
 }
+.appTitle{
+  position: absolute;
+  top: -1%;
+  left: 1%;
+  z-index: 2;
+  font-family: 'Pacifico', cursive;
+  color: #76323f;
+  font-size: 3.2vw;
+}
 .appContainer{
   position: relative;
   width: 100vw;
@@ -31,6 +42,12 @@ header{
   height: 100%;
   width: 20%;
   background-color: #d7cec7;
+  padding-top: 4%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 2.5%;
 }
 .resultsPage{
   height: 100%;
@@ -44,7 +61,6 @@ header{
   padding: 1%;
   overflow: hidden;
   overflow-y: scroll;
-  /* background-color: #76323f; */
   background-color: #d7cec7;
 
 }
