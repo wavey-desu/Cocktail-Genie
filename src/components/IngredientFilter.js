@@ -6,7 +6,7 @@ import './IngredientFilter.css'
 
 
 export default function IngredientFilter({handleIngredientsOption}) {
-  const {data, isPending, error} = useFetch('https://www.thecocktaildb.com/api/json/v2/9973533/list.php?i=list');
+  const {data, isPending, error} = useFetch('https://www.thecocktaildb.com/api/json/v2/'+ process.env.REACT_APP_KEY + '/list.php?i=list');
   const [options, setOptions] = useState([]);
   const [value1, setValue1] = useState('')
   const [value2, setValue2] = useState('')
@@ -72,7 +72,7 @@ export default function IngredientFilter({handleIngredientsOption}) {
           <Autocomplete
           disablePortal
           value={value2}
-          onChange={(event, newValue) => setValue2(newValue.replace(' ','_'))}
+          onChange={(event, newValue) => setValue2(newValue)}
           inputValue={changeValue2}
           onInputChange={(event, newValue) => setChangeValue2(newValue)}
           id="ingredient-filter"
@@ -89,7 +89,7 @@ export default function IngredientFilter({handleIngredientsOption}) {
           <Autocomplete
           disablePortal
           value={value3}
-          onChange={(event, newValue) => setValue3(newValue.replace(' ','_'))}
+          onChange={(event, newValue) => setValue3(newValue)}
           inputValue={changeValue3}
           onInputChange={(event, newValue) => setChangeValue3(newValue)}
           id="ingredient-filter"

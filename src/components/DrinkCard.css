@@ -10,6 +10,8 @@
     align-items: center;
     text-align: center;
     overflow: hidden;
+    opacity: 0;
+    animation: cardIn .5s ease forwards .2s;
 }
 .card:hover{
     cursor: pointer;
@@ -37,5 +39,10 @@
     }
     .cardTitle{
         font-size: 5vw;
+    }
+}
+@keyframes cardIn {
+    100%{
+        opacity: 1;
     }
 }

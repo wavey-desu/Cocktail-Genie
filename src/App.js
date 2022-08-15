@@ -15,7 +15,7 @@ import SortIcon from '@mui/icons-material/Sort';
 
 function App() {
  const [urlOption, setUrlOption] = useState('popular.php')
-const [url, setUrl] = useState('https://www.thecocktaildb.com/api/json/v2/9973533/' + urlOption)
+const [url, setUrl] = useState('https://www.thecocktaildb.com/api/json/v2/'+ process.env.REACT_APP_KEY + '/' + urlOption)
 const {data, isPending, error} = useFetch(url);
 const [drinks, setDrinks] = useState([]);
 const [rDrinks, setRDrinks] = useState([]);
@@ -27,7 +27,7 @@ const [showMenu, setShowMenu] = useState(false)
 
 const handleOpen = () => setOpen(true);//drink modal open
 const handleClose = () => setOpen(false);//drink modal close
-const handleId = (id) => setDrinkId( prevDrinkId => {return 'https://www.thecocktaildb.com/api/json/v2/9973533/lookup.php?i=' + id})
+const handleId = (id) => setDrinkId( prevDrinkId => {return 'https://www.thecocktaildb.com/api/json/v2/'+ process.env.REACT_APP_KEY + '/lookup.php?i=' + id})
 
 const handleSearch = (v) => {
   if (v) {
@@ -45,7 +45,7 @@ const handeIngredientsOption = (v) => {
 console.log(url);
 
 useEffect(() => {
-  setUrl(prevUrl => {return 'https://www.thecocktaildb.com/api/json/v2/9973533/' + urlOption})
+  setUrl(prevUrl => {return 'https://www.thecocktaildb.com/api/json/v2/'+ process.env.REACT_APP_KEY + '/' + urlOption})
   if (data) {
     setDrinks(prevDrinks => {return data.drinks})
   }
@@ -119,7 +119,7 @@ useEffect(() => { //set filtered drinks
         <div className='resultsPage' onClick={() => setShowMenu(false)}>
             {isPending && <h1 className='errorMsg'>Loading...</h1>}
             {error && <h1 className='errorMsg'>Oops..try that again...</h1>}
-            {rDrinks.length === 0 && <h1 className='errorMsg'>Oops..try that again...</h1>}
+            {rDrinks.length === 0 && !isPending && <h1 className='errorMsg'>Oops..try that again...</h1>}
             {rDrinks && !isPending && !error && rDrinks.length !== 0 && rDrinks.map(drink => (
             <DrinkCard 
               key = {drink.idDrink}

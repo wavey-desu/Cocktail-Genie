@@ -140,6 +140,9 @@ header .css-i4bv87-MuiSvgIcon-root{
   .resultsPage{
     width: 100vw;
   }
+  .resultsTitle{
+    font-size: 100%;
+  }
   .App {
     background-color: #76323f;
   }
