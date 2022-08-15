@@ -17,6 +17,7 @@ const [url, setUrl] = useState('https://www.thecocktaildb.com/api/json/v2/997353
 const {data, isPending, error} = useFetch(url);
 const [drinks, setDrinks] = useState([]);
 const [rDrinks, setRDrinks] = useState([]);
+const [resultsTitle, setResultsTitle] = useState('Popular Drinks')
 const [open, setOpen] = useState(false); //modal open/note open state
 const [drinkId, setDrinkId] = useState('') // modal 
 const [alcFilter, setAlcFilter] = useState('')
@@ -25,46 +26,52 @@ const handleOpen = () => setOpen(true);//drink modal open
 const handleClose = () => setOpen(false);//drink modal close
 const handleId = (id) => setDrinkId( prevDrinkId => {return 'https://www.thecocktaildb.com/api/json/v2/9973533/lookup.php?i=' + id})
 
-const handeIngredientsOption = (v) => {
-  if (v){
-    setUrlOption(prevOption => {return 'filter.php?i=' + v})
-  }
-}
-
 const handleSearch = (v) => {
   if (v) {
     setUrlOption(prevOption => {return 'search.php?s=' + v})
+    setResultsTitle(prevTitle => {return 'Results for: "' + v.replace('_', ' ') + '"'})
   }
 }
 
+const handeIngredientsOption = (v) => {
+  if (v){
+    setUrlOption(prevOption => {return 'filter.php?i=' + v})
+    setResultsTitle(prevTitle => {return 'Drinks that include: ' + v.replace('_', ' ').replace(',', ', ')})
+  }
+}
+console.log(url);
+
 useEffect(() => {
   setUrl(prevUrl => {return 'https://www.thecocktaildb.com/api/json/v2/9973533/' + urlOption})
-  if (data !== null) {
+  if (data) {
     setDrinks(prevDrinks => {return data.drinks})
   }
 }, [data,url,urlOption])
 
-useEffect(() => {
-  if (alcFilter !== ''){
-    setRDrinks( prevDrinks => {return drinks.filter((drink) => {
-      return drink.strAlcoholic === alcFilter
-    })})
-
-  }else{
-    setRDrinks( prevDrinks => {return drinks.filter((drink) => {
-      return drink.strAlcoholic !== null
-    })})
-
-  }
+useEffect(() => { //set filtered drinks
+  if (drinks === 'None Found' || !drinks) {
+    setRDrinks([])
+  } else{
+    if (alcFilter !== '' && drinks ){
+      setRDrinks( prevDrinks => {return drinks.filter((drink) => {
+        return drink.strAlcoholic === alcFilter
+      })})
   
+    }else if (drinks && drinks){
+      setRDrinks( prevDrinks => {return drinks.filter((drink) => {
+        return drink.strAlcoholic !== null
+      })})
+  
+    }
+  }
 },[alcFilter,drinks])
-console.log(rDrinks);
+// console.log(rDrinks);
 
 
 
   return (
     <div className="App">
-    <h1 className='appTitle'>Cocktail Genie</h1>
+      <h1 className='appTitle'>Cocktail Genie</h1>
       <DrinkModal 
         open = {open} 
         handleClose = {handleClose}
@@ -72,12 +79,15 @@ console.log(rDrinks);
         />
 
       <header className="header">
-        <Nav 
-          setUrlOption = {setUrlOption}
-        />
+        <h1 className='resultsTitle'>{resultsTitle}</h1>
       </header>
       <div className='appContainer'>
         <div className='filterPage'>
+
+          <Nav 
+            setUrlOption = {setUrlOption}
+            setResultsTitle = {setResultsTitle}
+          />
         
           <div className='filterCont searchFilter'>
             <SearchFilter 
@@ -101,7 +111,7 @@ console.log(rDrinks);
         </div>
 
         <div className='resultsPage'>
-          {rDrinks && rDrinks.map(drink => (
+            {rDrinks && !isPending && !error && rDrinks.length === 0 ? <h1 className='errorMsg'>Oops..try that again...</h1> : rDrinks.map(drink => (
             <DrinkCard 
               key = {drink.idDrink}
               id = {drink.idDrink}
@@ -110,7 +120,6 @@ console.log(rDrinks);
               handleOpen = {handleOpen}
               handleId = {handleId}
              />
-
           ))}
         </div>
       </div>

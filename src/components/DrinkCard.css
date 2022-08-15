@@ -3,6 +3,7 @@
     width: 24%;
     height: 45%;
     border-radius: 10%;
+    /* padding: 2%; */
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -20,11 +21,11 @@
     z-index: 1;
 }
 .cardTitle{
-    margin-top: 0%;
+    margin-top: 2%;
     position: relative;
-    font-size: 2.2vw;
+    font-size: 2.5vw;
     color: #d7cec7;
+    text-shadow: .2vw .2vw .6vw #76323f;
     z-index: 2;
-    width: 100%;
-    background-color: #0000008a;
+    /* width: 100%; */
 }

@@ -12,10 +12,10 @@ export default function DrinkModal({open,  handleClose, drinkId}) {
 
 
     useEffect(() => {
-        if (data !== null) {
+        if (data && !isPending && !error) {
           setDrink(prevDrink => {return {...data.drinks[0]}})
         }
-    }, [data])
+    }, [data,isPending,error])
     
     useEffect(() => { //useEffect on selected drink to get ingredients bc JSON format is trash
         const ing = []
@@ -49,7 +49,7 @@ export default function DrinkModal({open,  handleClose, drinkId}) {
         }
         setIngredients({...ings})
     }, [drink])
-    // console.log(ingredients);
+    // console.log(typeof drink.strTags);
     
     
   return (
@@ -64,23 +64,33 @@ export default function DrinkModal({open,  handleClose, drinkId}) {
         <div className='modalContents'>
             <div className='modalSection modalInfo'>
                 <img className='modalImg' src={drink.strDrinkThumb} alt="Drink" />
-                <h3>{drink.strInstructions}</h3>
+                <div className="modalCategories">
+                    <h3>Categories: {drink.strCategory ? drink.strCategory : ''}, {drink.strTags ? drink.strTags.replace(/,/g,', '): ''}</h3>
+                </div>
             </div>
             <div className="modalSection modalIngredients">
-            <h1 className='modalTitle'>{drink.strDrink}</h1>
-                <table>
-                    <tr>
-                        <th>Ingredient</th>
-                        <th>Quantity</th>
-                    </tr>
-                {ingredients && Object.keys(ingredients).map((ingredient, index) => ( //iterate trough objects of ingredient object
-                    <tr>
-                    <td key={index}>{ingredients[ingredient].name}</td>
-                    <td key={index}>{ingredients[ingredient].measure}</td>
-                    </tr>
-                    
-                ))}
+                <h1 className='modalTitle'>{drink.strDrink}</h1>
+                <table className='modalTable'>
+                    <thead>
+                        <tr>
+                            <th>Ingredients</th>
+                            <th>Quantity</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {ingredients && Object.keys(ingredients).map((ingredient, index) => ( //iterate trough objects of ingredient object
+                        <tr>
+                        <td key={index}>{ingredients[ingredient].name}</td>
+                        <td key={index + '-1'}>{ingredients[ingredient].measure}</td>
+                        </tr>  
+                    ))}
+                    </tbody>
                 </table>
+                <div className="preparation">
+                    <h2>Preparation:</h2>
+                    <h3>{drink.strInstructions}</h3>
+                </div>
+                <h3 className="modalGlass">Served in: <span className='glass'>{drink.strGlass}</span></h3>
             </div>
         </div>
         </Box>

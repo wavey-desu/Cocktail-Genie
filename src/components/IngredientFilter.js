@@ -6,7 +6,6 @@ import './IngredientFilter.css'
 
 
 export default function IngredientFilter({handleIngredientsOption}) {
-  // const [url, setUrl] = useState('https://www.thecocktaildb.com/api/json/v2/9973533/list.php?i=list')
   const {data, isPending, error} = useFetch('https://www.thecocktaildb.com/api/json/v2/9973533/list.php?i=list');
   const [options, setOptions] = useState([]);
   const [value1, setValue1] = useState('')
@@ -15,13 +14,13 @@ export default function IngredientFilter({handleIngredientsOption}) {
 
   useEffect(() => {
     const ings = []
-    if (data !== null) {
+    if (data && !isPending && !error) {
       for(const prop in data.drinks){
         ings.push(data.drinks[prop].strIngredient1);
       }
     }
     setOptions(...[ings])
-  }, [data])
+  }, [data,isPending,error])
   // console.log(options);
   
   const handleValue = (e) => {
@@ -43,7 +42,6 @@ export default function IngredientFilter({handleIngredientsOption}) {
     // console.log(v);
   }
 
-  const style = {}
 
   return (
     <form className='ingredientsForm' onSubmit={handleValue}>
@@ -53,9 +51,9 @@ export default function IngredientFilter({handleIngredientsOption}) {
           <Autocomplete
           disablePortal
           value={value1}
-          onChange={(event, newValue) => setValue1(newValue.replace(' ','_'))}
+          onChange={(event, newValue) => setValue1(newValue)}
           inputValue={value1}
-          onInputChange={(event, newValue) => setValue1(newValue.replace(' ','_'))}
+          onInputChange={(event, newValue) => setValue1(newValue)}
           // sx = {{}}
           id="ingredient-filter"
           options={options}
