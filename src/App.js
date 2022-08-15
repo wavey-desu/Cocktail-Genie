@@ -11,6 +11,8 @@ import AlcoholFilter from './components/AlcoholFilter'
 import Nav from './components/Nav'
 import IconButton from '@mui/material/IconButton';
 import SortIcon from '@mui/icons-material/Sort';
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
 
 
 function App() {
@@ -24,6 +26,19 @@ const [open, setOpen] = useState(false); //modal open/note open state
 const [drinkId, setDrinkId] = useState('') // modal 
 const [alcFilter, setAlcFilter] = useState('')
 const [showMenu, setShowMenu] = useState(false)
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCXkaxT7mEtVRnlyO-KswB4CzqxsjYDxeE",
+  authDomain: "cocktail-genie-8508e.firebaseapp.com",
+  projectId: "cocktail-genie-8508e",
+  storageBucket: "cocktail-genie-8508e.appspot.com",
+  messagingSenderId: "380286039520",
+  appId: "1:380286039520:web:e1dbc1350893e14384e785",
+  measurementId: "G-6E05HX0HXV"
+};
+
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
 
 const handleOpen = () => setOpen(true);//drink modal open
 const handleClose = () => setOpen(false);//drink modal close
