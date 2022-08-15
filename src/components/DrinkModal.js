@@ -17,7 +17,7 @@ export default function DrinkModal({open,  handleClose, drinkId}) {
         }
     }, [data,isPending,error])
     
-    useEffect(() => { //useEffect on selected drink to get ingredients bc JSON format is trash
+    useEffect(() => { //useEffect on selected drink to get ingredients bc API's JSON format is trash
         const ing = []
         const measures = []
         const ings = {}

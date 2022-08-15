@@ -22,3 +22,26 @@
 .css-1sumxir-MuiFormLabel-root-MuiInputLabel-root.Mui-focused{
     color: #76323f !important;
 }
+
+@media screen and (max-width: 500px) {
+    .nameSearchCont{
+        width: 40vw;
+    }
+    .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input{
+        font-size: 3vw !important;
+    }
+    .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root{
+        font-size: 2.5vw !important;
+    }
+    .css-1sumxir-MuiFormLabel-root-MuiInputLabel-root.Mui-focused{
+        font-size: 2vw !important;
+    }
+    .searchLabel{
+        font-size: 3.2vw;
+        margin-bottom: 5%;
+        color: #76323f;
+    }
+
+
+
+}

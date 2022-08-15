@@ -11,6 +11,9 @@ export default function IngredientFilter({handleIngredientsOption}) {
   const [value1, setValue1] = useState('')
   const [value2, setValue2] = useState('')
   const [value3, setValue3] = useState('')
+  const [changeValue1, setChangeValue1] = useState('')
+  const [changeValue2, setChangeValue2] = useState('')
+  const [changeValue3, setChangeValue3] = useState('')
 
   useEffect(() => {
     const ings = []
@@ -52,8 +55,8 @@ export default function IngredientFilter({handleIngredientsOption}) {
           disablePortal
           value={value1}
           onChange={(event, newValue) => setValue1(newValue)}
-          inputValue={value1}
-          onInputChange={(event, newValue) => setValue1(newValue)}
+          inputValue={changeValue1}
+          onInputChange={(event, newValue) => setChangeValue1(newValue)}
           // sx = {{}}
           id="ingredient-filter"
           options={options}
@@ -70,8 +73,8 @@ export default function IngredientFilter({handleIngredientsOption}) {
           disablePortal
           value={value2}
           onChange={(event, newValue) => setValue2(newValue.replace(' ','_'))}
-          inputValue={value2}
-          onInputChange={(event, newValue) => setValue2(newValue.replace(' ','_'))}
+          inputValue={changeValue2}
+          onInputChange={(event, newValue) => setChangeValue2(newValue)}
           id="ingredient-filter"
           options={options}
           sx={{ width: '100%' }}
@@ -87,8 +90,8 @@ export default function IngredientFilter({handleIngredientsOption}) {
           disablePortal
           value={value3}
           onChange={(event, newValue) => setValue3(newValue.replace(' ','_'))}
-          inputValue={value3}
-          onInputChange={(event, newValue) => setValue3(newValue.replace(' ','_'))}
+          inputValue={changeValue3}
+          onInputChange={(event, newValue) => setChangeValue3(newValue)}
           id="ingredient-filter"
           options={options}
           sx={{ width: '100%' }}

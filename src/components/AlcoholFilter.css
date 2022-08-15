@@ -20,3 +20,13 @@
 .css-ahj2mt-MuiTypography-root{
     font-size: 1.2vw !important;
 }
+@media screen and (max-width: 500px) {
+
+    .AlcFilterTitle{
+        font-size: 3.2vw;
+    }
+    .css-ahj2mt-MuiTypography-root{
+        font-size: 2.5vw !important;
+    }
+
+}

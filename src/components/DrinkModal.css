@@ -120,3 +120,39 @@
 .glass{
     color: #76323f;
 }
+
+@media screen and (max-width: 500px) {
+
+    .modalContents{
+        flex-direction: column;
+    }
+    .modalSection{
+        width: 100%;
+    }
+    .modalCategories{
+        font-size: 2vw;
+    }
+    .modalTitle{
+        font-size: 7vw;
+    }
+    .modalTable{
+        margin-top: 1vh;
+        font-size: 2.5vw;
+        text-align: start;
+    }
+    .modalTable th{
+        background-color: #76323f !important;
+        color: #d7cec7;
+        font-size: 3vw;
+    }
+    .preparation h2{
+        font-size: 3.5vw;
+    }
+    .preparation h3{
+        font-size: 2.5vw;
+    }
+    .modalGlass{
+        font-size: 2.75vw;
+    }
+
+}

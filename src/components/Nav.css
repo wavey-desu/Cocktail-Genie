@@ -27,3 +27,10 @@
 .navBar button:active{
     transform: translateY(4%);
 }
+
+@media screen and (max-width: 500px) {
+    .navBar button{
+        font-size: 2.5vw;
+    }
+
+}

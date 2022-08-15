@@ -12,7 +12,7 @@
   width: 100vw;
   height: 100vh;
   background-color: #d7cec7;
-
+  overflow: hidden;
 }
 
 header{
@@ -23,7 +23,6 @@ header{
   left: 20%;
   background-color: #76323f;
   display: flex;
-  flex-direction: row;
   justify-content: center;
   align-items: center;
 }
@@ -31,6 +30,7 @@ header{
   color: #d7cec7;
   font-size: 5vh;
 }
+
 .appTitle{
   position: absolute;
   top: -1%;
@@ -60,6 +60,7 @@ header{
 
 .filterPage{
   height: 100%;
+  max-height: 100%;
   width: 20%;
   background-color: #d7cec7;
   padding-top: 1.5%;
@@ -74,10 +75,11 @@ header{
   width: 80vw;
   display: flex;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: flex-start;
+  align-content: flex-start;
   flex-wrap: wrap;
-  gap: 1%;
+  gap: 2%;
   padding: 1%;
   overflow: hidden;
   overflow-y: scroll;
@@ -102,5 +104,64 @@ header{
   font-family: 'Pacifico', cursive;
   color: #d7cec7;
 }
+/* RESPONSIVE QUERIES */
 
+.showSortBtn{
+  position: absolute !important;
+  left: 1%;
+  width: 10% !important;
+  height: 80% !important;
+  padding: 0;
+  display: none !important;
+}
+header .css-i4bv87-MuiSvgIcon-root{
+  width: 150% !important;
+  height: 150% !important;
+  color: #d7cec7 !important;
+}
+
+@media screen and (max-width: 500px) {
+
+  .showSortBtn{
+    display: inherit !important;
+  }
+
+  .filterPage{
+    position: absolute;
+    width: 45vw;
+    left: -45%;
+    z-index: 3;
+    transition: left .75s ease;
+  }
+  .menuShow{
+    left: 0;
+  }
+
+  .resultsPage{
+    width: 100vw;
+  }
+  .App {
+    background-color: #76323f;
+  }
+  header{
+    width: 100vw;
+    left: 0;
+    justify-content: start;
+    padding-left: 10%;
+  }
+  .appTitle{
+    top: 1%;
+    left: 72%;
+    z-index: 2;
+    font-family: 'Pacifico', cursive;
+    color: #d7cec7;
+    font-size: 4vw;
+  }
+  .appTitle::after{
+    background-color: #d7cec7;
+  }
+  .navBar button{
+    font-size: 2.5vw;
+  }
+}
 

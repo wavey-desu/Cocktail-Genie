@@ -40,3 +40,27 @@
 .ingredientsSubmit:active{
     transform: translateY(4%);
 }
+
+@media screen and (max-width: 500px) {
+
+    .ingredientsForm{
+        width: 40vw;
+        /* height: 45%; */
+    }
+    .css-nxo287-MuiInputBase-input-MuiOutlinedInput-input{
+        font-size: 3vw !important;
+    }
+    .ingredientsLabel{
+        font-size: 3.2vw;
+        margin-bottom: 2vh;
+        color: #76323f;
+    }
+    .ingredientsSubmit{
+        width: 15vw;
+        height: 5vw;
+        padding: 1%;
+        font-size: 2.5vw;
+    }
+
+
+}

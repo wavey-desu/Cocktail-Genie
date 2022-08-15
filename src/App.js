@@ -9,6 +9,8 @@ import IngredientFilter from './components/IngredientFilter'
 import SearchFilter from './components/SearchFilter'
 import AlcoholFilter from './components/AlcoholFilter'
 import Nav from './components/Nav'
+import IconButton from '@mui/material/IconButton';
+import SortIcon from '@mui/icons-material/Sort';
 
 
 function App() {
@@ -21,6 +23,7 @@ const [resultsTitle, setResultsTitle] = useState('Popular Drinks')
 const [open, setOpen] = useState(false); //modal open/note open state
 const [drinkId, setDrinkId] = useState('') // modal 
 const [alcFilter, setAlcFilter] = useState('')
+const [showMenu, setShowMenu] = useState(false)
 
 const handleOpen = () => setOpen(true);//drink modal open
 const handleClose = () => setOpen(false);//drink modal close
@@ -79,10 +82,13 @@ useEffect(() => { //set filtered drinks
         />
 
       <header className="header">
+        <IconButton onClick={() => setShowMenu(!showMenu)} className='showSortBtn' aria-label="Sort">
+          <SortIcon className='showSortIcon' />
+        </IconButton>
         <h1 className='resultsTitle'>{resultsTitle}</h1>
       </header>
       <div className='appContainer'>
-        <div className='filterPage'>
+        <div className= {showMenu ? 'menuShow filterPage' : 'filterPage'}>
 
           <Nav 
             setUrlOption = {setUrlOption}
@@ -110,8 +116,11 @@ useEffect(() => { //set filtered drinks
 
         </div>
 
-        <div className='resultsPage'>
-            {rDrinks && !isPending && !error && rDrinks.length === 0 ? <h1 className='errorMsg'>Oops..try that again...</h1> : rDrinks.map(drink => (
+        <div className='resultsPage' onClick={() => setShowMenu(false)}>
+            {isPending && <h1 className='errorMsg'>Loading...</h1>}
+            {error && <h1 className='errorMsg'>Oops..try that again...</h1>}
+            {rDrinks.length === 0 && <h1 className='errorMsg'>Oops..try that again...</h1>}
+            {rDrinks && !isPending && !error && rDrinks.length !== 0 && rDrinks.map(drink => (
             <DrinkCard 
               key = {drink.idDrink}
               id = {drink.idDrink}
