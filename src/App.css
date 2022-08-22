@@ -119,7 +119,13 @@ header .css-i4bv87-MuiSvgIcon-root{
   height: 150% !important;
   color: #d7cec7 !important;
 }
-
+.wvtTag{
+  position: absolute;
+  left: 6vw;
+  bottom: 1vw;
+  font-size: 2vh;
+  color: #858483;
+}
 @media screen and (max-width: 500px) {
 
   .showSortBtn{

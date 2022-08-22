@@ -17,7 +17,7 @@ export default function AlcoholFilter({setAlcFilter}) {
       color: '#76323f !important',
     },
     '& .MuiSvgIcon-root': {
-      fontSize: '1.5vw',
+      fontSize: '3vh',
     },
     
   }

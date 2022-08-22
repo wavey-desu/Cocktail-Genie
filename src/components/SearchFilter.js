@@ -26,8 +26,8 @@ export default function SearchFilter({handleSearch}) {
             <TextField className='nameSearchIn' id="searchBar" label="e.g. Mojito" variant="outlined"
             onChange={(e) => setValue(e.target.value.replace(' ','_'))} 
             sx={{ width: '100%' }} 
-            inputProps={{style: {fontSize: '1vw'}}}
-            InputLabelProps={{style: {fontSize: '1vw'}}}
+            inputProps={{style: {fontSize: '2.25vh'}}}
+            InputLabelProps={{style: {fontSize: '2.25vh'}}}
             />
             <IconButton type="submit" aria-label="search" sx={{ width: '3vw', height: '3vw' }} >
                 <SearchIcon className='searchIcon' sx={{ width: '100%' }}/>

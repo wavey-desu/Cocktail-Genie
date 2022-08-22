@@ -30,13 +30,13 @@ export default function IngredientFilter({handleIngredientsOption}) {
     e.preventDefault()
     let inputs = ''
 
-    if(value1 !== ''){
+    if(value1 && value1 !== ''){
       inputs = value1
     }
-    if(value2 !== '' && value2 !== value1){
+    if(value2 && value2 !== '' && value2 !== value1){
       inputs = inputs + ',' + value2
     }
-    if(value3 !== '' && value3 !== value1 && value3 !== value2){
+    if(value3 && value3 !== '' && value3 !== value1 && value3 !== value2){
       inputs = inputs + ',' + value3
     }
     if (inputs !== ''){
@@ -62,8 +62,8 @@ export default function IngredientFilter({handleIngredientsOption}) {
           options={options}
           sx={{ width: '100%' }}
           renderInput={(params) => <TextField {...params} label="Ingredient" 
-          inputProps={{ ...params.inputProps, style: { fontSize: "1vw" } }}
-          InputLabelProps={{ ...params.inputProps, style: { fontSize: "1vw" } }}
+          inputProps={{ ...params.inputProps, style: { fontSize: "2.25vh" } }}
+          InputLabelProps={{ ...params.inputProps, style: { fontSize: "2.25vh" } }}
  
           />}
           
@@ -79,8 +79,8 @@ export default function IngredientFilter({handleIngredientsOption}) {
           options={options}
           sx={{ width: '100%' }}
           renderInput={(params) => <TextField {...params} label="Ingredient" 
-          inputProps={{ ...params.inputProps, style: { fontSize: "1vw" } }}
-          InputLabelProps={{ ...params.inputProps, style: { fontSize: "1vw" } }}
+          inputProps={{ ...params.inputProps, style: { fontSize: "2.25vh" } }}
+          InputLabelProps={{ ...params.inputProps, style: { fontSize: "2.25vh" } }}
 
           />}
 
@@ -96,8 +96,8 @@ export default function IngredientFilter({handleIngredientsOption}) {
           options={options}
           sx={{ width: '100%' }}
           renderInput={(params) => <TextField {...params} label="Ingredient" 
-          inputProps={{ ...params.inputProps, style: { fontSize: "1vw" } }}
-          InputLabelProps={{ ...params.inputProps, style: { fontSize: "1vw" } }}
+          inputProps={{ ...params.inputProps, style: { fontSize: "2.25vh" } }}
+          InputLabelProps={{ ...params.inputProps, style: { fontSize: "2.25vh" } }}
           />}
 
         /> 
